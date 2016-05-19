@@ -1,0 +1,22 @@
+{
+  "name": "ng-app",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zidein07/angularJs-start",
+  "authors": [
+    "zidein07 <zidein07@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.5",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.3"
+  }
+}

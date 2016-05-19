@@ -1,0 +1,25 @@
+{
+  "name": "ng-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./node_modules/gulp/bin/gulp.js connect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zidein07/angularJs-start.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zidein07/angularJs-start/issues"
+  },
+  "homepage": "https://github.com/zidein07/angularJs-start#readme",
+  "dependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
+    "less": "^2.7.1"
+  }
+}

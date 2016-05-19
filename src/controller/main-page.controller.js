@@ -1,3 +1,6 @@
 app.controller('mainPageController', function ($scope) {
-    console.log('12312', 12312);
+
+    $scope.addTodo = function () {
+        console.log('123123', 123123);
+    }
 });

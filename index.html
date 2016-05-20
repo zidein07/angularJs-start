@@ -1,44 +1,44 @@
 <!doctype html>
 <html ng-app="todoApp" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>First app in AngularJS</title>
-    <link rel="shortcut icon" href="https://www.google.ru/favicon.ico"/>
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="src/style/public.css">
-</head>
-<body>
-<div ng-controller="mainPageController" class="container col-sm-6 col-sm-offset-3 col-xs-12" id="block">
-    <h1 class="text-center">TodoList</h1>
-    <form id="todoForm">
-        <div class="input-group">
-            <input type="text" class="form-control" id="todoFormText">
-        <span ng-click="addTodo()" class="input-group-btn">
-          <button class="btn btn-default" type="button" id="todoFormAdd">Добавить</button>
-        </span>
+    <head>
+        <meta charset="UTF-8">
+        <title>First app in AngularJS</title>
+        <link rel="shortcut icon" href="https://www.google.ru/favicon.ico"/>
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="src/style/public.css">
+    </head>
+    <body>
+        <div ng-controller="mainPageController" class="container col-sm-6 col-sm-offset-3 col-xs-12" id="block">
+            <h1 class="text-center">TodoList</h1>
+            <form id="todoForm">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="todoFormText">
+                    <span ng-click="addTodo()" class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="todoFormAdd">Добавить</button>
+                    </span>
+                </div>
+            </form>
+            <br>
+            <div class="btn-group btn-group-justified" id="nav">
+                <div class="btn-group">
+                    <a href="" role="button" class="btn btn-default" id="all">All</a>
+                </div>
+                <div class="btn-group">
+                    <a href="" role="button" class="btn btn-default" id="active">Active</a>
+                </div>
+                <div class="btn-group">
+                    <a href="" role="button" class="btn btn-default" id="completed">Completed</a>
+                </div>
+            </div>
+            <br>
+            <div id="todoContainer">
+                <div class="list-group" id="todoList"></div>
+            </div>
         </div>
-    </form>
-    <br>
-    <div class="btn-group btn-group-justified" id="nav">
-        <div class="btn-group">
-            <a href="" role="button" class="btn btn-default" id="all">All</a>
-        </div>
-        <div class="btn-group">
-            <a href="" role="button" class="btn btn-default" id="active">Active</a>
-        </div>
-        <div class="btn-group">
-            <a href="" role="button" class="btn btn-default" id="completed">Completed</a>
-        </div>
-    </div>
-    <br>
-    <div id="todoContainer">
-        <div class="list-group" id="todoList"></div>
-    </div>
-</div>
-<script src="vendor/jquery/dist/jquery.min.js"></script>
-<script src="vendor/angular/angular.min.js"></script>
-<script src="vendor/angular-route/angular-route.min.js"></script>
-<script src="src/app.js"></script>
-<script src="src/controller/main-page.controller.js"></script>
-</body>
+        <script src="vendor/jquery/dist/jquery.min.js"></script>
+        <script src="vendor/angular/angular.min.js"></script>
+        <script src="vendor/angular-route/angular-route.min.js"></script>
+        <script src="src/app.js"></script>
+        <script src="src/controller/main-page.controller.js"></script>
+    </body>
 </html>

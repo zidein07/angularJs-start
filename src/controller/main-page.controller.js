@@ -1,39 +1,44 @@
-app.controller('mainPageController', function ($scope) {
+app.controller('mainPageController', function ($scope, localStorageService) {
 	var statuses = ['all', 'active', 'done'];
 	
 	$scope.filter = 'all',
 	$scope.filteredTasks = [];
-	$scope.tasks = [
-		{
-			title: 'Тестовый таск',
-			status: 'active'
-		},
-		{
-			title: 'Тестовый таск 2',
-			status: 'active'
-		},
-		{
-			title: 'Тестовый таск 3',
-			status: 'active'
-		},
-		{
-			title: 'Тестовый таск 4',
-			status: 'active'
-		},
-		{
-			title: 'Тестовый таск 5',
-			status: 'active'
-		},
-		{
-			title: 'Тестовый таск 6',
-			status: 'active'
-		}
-	];
 
+	if( localStorageService.get('tasks') ){
+		$scope.tasks = JSON.parse(localStorageService.get('tasks'));
+	} else{
+		$scope.tasks = [
+			{
+				title: 'Накормить гуся',
+				status: 'active'
+			},
+			{
+				title: 'Подоить корову',
+				status: 'active'
+			},
+			{
+				title: 'Подстричь газон',
+				status: 'active'
+			},
+			{
+				title: 'Построить дом',
+				status: 'active'
+			},
+			{
+				title: 'Затопить баню',
+				status: 'active'
+			}
+		];
 
+		localStorageService.set( 'tasks', JSON.stringify($scope.tasks) );
+	}
+	
 
 	if( _.indexOf(statuses, location.href.split('#')[1]) != -1){
 		$scope.filter = location.href.split('#')[1];
+		localStorageService.set('filter', $scope.filter);
+	}else if( localStorageService.get('filter').length ){
+		$scope.filter = localStorageService.get('filter');
 	}
 
 	window.addEventListener('hashchange', function(hash){
@@ -43,23 +48,12 @@ app.controller('mainPageController', function ($scope) {
 		}else{
 			$scope.filter = 'all';
 		}
-		console.log($scope.filter);
+		localStorageService.set('filter', $scope.filter);
 		filterTasks($scope.filter);
-
+		$scope.$apply();
 	});
 	$scope.newTask = '';
 	filterTasks( $scope.filter );
-
-	// $scope.changeLocation = function(){
-	// 	$scope.filter = location.href.split('#')[1];
-	// 	filterTasks($scope.filter);
-	// }
-	$scope.setUrl = function(str){
-		var currentUrl = location.href;
-		var baseUrl = location.href.split('#')[0];
-		var newUrl = baseUrl + '#' + str;
-		location.href = newUrl;
-	}
 
 	$scope.addTodo = function () {
         var task = {
@@ -76,6 +70,7 @@ app.controller('mainPageController', function ($scope) {
     	} else{
     		task.status = 'active';
     	}
+    	localStorageService.set( 'tasks', JSON.stringify($scope.tasks) );
     	
     	filterTasks($scope.filter);
     }

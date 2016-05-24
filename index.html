@@ -21,19 +21,16 @@
             <br>
             <div class="btn-group btn-group-justified" id="nav">
                 <div class="btn-group">
-                    <a href="" role="button" class="btn btn-default" id="all" ng-click="setUrl('all')">All</a>
+                    <a href="#all" role="button" class="btn btn-default" id="all">All</a>
                 </div>
                 <div class="btn-group">
-                    <a href="" role="button" class="btn btn-default" id="active" ng-click="setUrl('active')">Active</a>
+                    <a href="#active" role="button" class="btn btn-default" id="active">Active</a>
                 </div>
                 <div class="btn-group">
-                    <a href="" role="button" class="btn btn-default" id="completed" ng-click="setUrl('done')">Done</a>
+                    <a href="#done" role="button" class="btn btn-default" id="completed">Done</a>
                 </div>
             </div>
             <br>
-            <pre ng-bind="filteredTasks | json">
-                
-            </pre>
             <div id="todoContainer">
                 <div class="list-group" id="todoList">
 
@@ -46,6 +43,7 @@
         <script src="vendor/jquery/dist/jquery.min.js"></script>
         <script src="vendor/angular/angular.min.js"></script>
         <script src="vendor/angular-route/angular-route.min.js"></script>
+        <script src="vendor/angular-local-storage/dist/angular-local-storage.min.js"></script>
         <script src="vendor/lodash/lodash.js"></script>
         <script src="src/app.js"></script>
         <script src="src/controller/main-page.controller.js"></script>

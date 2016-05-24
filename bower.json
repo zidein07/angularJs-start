@@ -19,6 +19,7 @@
     "angular-route": "~1.5.5",
     "bootstrap": "~3.3.6",
     "jquery": "~2.2.3",
-    "lodash": "^4.13.0"
+    "lodash": "^4.13.0",
+    "angular-local-storage": "^0.2.7"
   }
 }

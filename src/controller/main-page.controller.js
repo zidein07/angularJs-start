@@ -1,8 +1,8 @@
 app.controller('mainPageController', function ($scope, localStorageService) {
     var statuses = ['all', 'active', 'done'];
     var currentStatus = location.href.split('#')[1];
-
-
+    
+    
     $scope.filter = 'all';
     $scope.newTask = '';
     $scope.filteredTasks = [];

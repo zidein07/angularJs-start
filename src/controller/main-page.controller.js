@@ -1,5 +1,4 @@
 app.controller('mainPageController', function ($scope) {
-
 	var statuses = ['all', 'active', 'done'];
 	
 	$scope.filter = 'all',
@@ -31,35 +30,43 @@ app.controller('mainPageController', function ($scope) {
 		}
 	];
 
+
+
 	if( _.indexOf(statuses, location.href.split('#')[1]) != -1){
 		$scope.filter = location.href.split('#')[1];
 	}
 
 	window.addEventListener('hashchange', function(hash){
-
-		if( _.indexOf(statuses, hash.newURL.split('#')[1]) != -1){
-			$scope.filter = hash.newURL.split('#')[1];
+		var myHash = hash.newURL.split('#')[1];
+		if( _.indexOf(statuses, myHash) != -1){
+			$scope.filter = myHash;
 		}else{
 			$scope.filter = 'all';
 		}
+		console.log($scope.filter);
 		filterTasks($scope.filter);
 
 	});
-
 	$scope.newTask = '';
-	$scope.$watch('newTask', function(current, pre) {
-		
-	});
-
-	
 	filterTasks( $scope.filter );
 
+	// $scope.changeLocation = function(){
+	// 	$scope.filter = location.href.split('#')[1];
+	// 	filterTasks($scope.filter);
+	// }
+	$scope.setUrl = function(str){
+		var currentUrl = location.href;
+		var baseUrl = location.href.split('#')[0];
+		var newUrl = baseUrl + '#' + str;
+		location.href = newUrl;
+	}
 
 	$scope.addTodo = function () {
         var task = {
         	title: $scope.newTask,
         	status: 'active'
         }
+        $scope.newTask = '';
         $scope.tasks.push(task);
         filterTasks($scope.filter);
     }
@@ -80,6 +87,7 @@ app.controller('mainPageController', function ($scope) {
     	} else{
 	    	$scope.filteredTasks = _.filter($scope.tasks, { 'status' : type });
     	}
+
     	console.log($scope.filteredTasks);
     }
 

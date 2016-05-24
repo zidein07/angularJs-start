@@ -4,7 +4,7 @@ var app = angular.module('todoApp', [
 ]);
 
 app.config(function (localStorageServiceProvider) {
-  localStorageServiceProvider
-    .setPrefix('todolist')
-    .setStorageType('localStorage');
+    localStorageServiceProvider
+        .setPrefix('todolist')
+        .setStorageType('localStorage');
 });

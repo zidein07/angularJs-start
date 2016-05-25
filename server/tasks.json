@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Накормить гуся",
+    "status": "active"
+  },
+  {
+    "title": "Подоить корову",
+    "status": "done"
+  },
+  {
+    "title": "Подстричь газон",
+    "status": "done"
+  },
+  {
+    "title": "Построить дом",
+    "status": "active"
+  },
+  {
+    "title": "Затопить баню",
+    "status": "active"
+  }
+]

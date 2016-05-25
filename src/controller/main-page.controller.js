@@ -1,4 +1,4 @@
-app.controller('mainPageController', function ($scope, localStorageService) {
+app.controller('mainPageController', function ($scope, localStorageService, $http) {
     var statuses = ['all', 'active', 'done'];
     var currentStatus = location.href.split('#')[1];
     
@@ -10,34 +10,21 @@ app.controller('mainPageController', function ($scope, localStorageService) {
     if (localStorageService.get('tasks')) {
         $scope.tasks = JSON.parse(localStorageService.get('tasks'));
     } else {
-        $scope.tasks = [
-            {
-                title: 'Накормить гуся',
-                status: 'active'
-            },
-            {
-                title: 'Подоить корову',
-                status: 'active'
-            },
-            {
-                title: 'Подстричь газон',
-                status: 'active'
-            },
-            {
-                title: 'Построить дом',
-                status: 'active'
-            },
-            {
-                title: 'Затопить баню',
-                status: 'active'
-            }
-        ];
-        localStorageService.set('tasks', JSON.stringify($scope.tasks));
+        $http({
+            method: 'GET',
+            url: '/server/tasks.json'
+        }).then(function successCallback(response) {
+            $scope.tasks = response.data;
+            localStorageService.set('tasks', JSON.stringify($scope.tasks));
+            filterTasks($scope.filter);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
     }
 
     if (_.indexOf(statuses, currentStatus) != -1) {
         localStorageService.set('filter', currentStatus);
-    } else if (localStorageService.get('filter').length) {
+    } else if (localStorageService.get('filter')) {
         $scope.filter = localStorageService.get('filter');
     }
 
@@ -52,7 +39,6 @@ app.controller('mainPageController', function ($scope, localStorageService) {
         filterTasks($scope.filter);
         $scope.$apply();
     });
-    filterTasks($scope.filter);
 
     $scope.addTodo = function () {
         var task = {

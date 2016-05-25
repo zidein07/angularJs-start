@@ -9,6 +9,7 @@ app.controller('mainPageController', function ($scope, localStorageService, $htt
 
     if (localStorageService.get('tasks')) {
         $scope.tasks = JSON.parse(localStorageService.get('tasks'));
+        filterTasks($scope.filter);
     } else {
         $http({
             method: 'GET',
